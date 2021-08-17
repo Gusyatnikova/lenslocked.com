@@ -1,0 +1,11 @@
+### Get home page
+GET http://localhost:3000/
+
+### get contact page
+GET http://localhost:3000/contact
+
+### get FAQ page
+GET http://localhost:3000/faq
+
+### get 404
+GET http://localhost:3000/another/one/
