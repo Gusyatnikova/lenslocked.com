@@ -6,6 +6,11 @@ import (
 	"net/http"
 )
 
+func notFoundHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-type", "text/html")
+	fmt.Fprint(w, "<h1> My page not found =)</h1>")
+}
+
 func home(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-type", "text/html")
 	fmt.Fprint(w, "<h1> Welcome to Natasha's awesome site!</h1>")
@@ -18,13 +23,15 @@ func contact(w http.ResponseWriter, r *http.Request) {
 }
 
 func faq (w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-type", "text/html; charset-utf-8")
+	w.Header().Set("Content-type", "text/html")
 	fmt.Fprint(w, "<h2>What is my mood today?</h2>" +
 		"<p>Looking forward to a productive day!</p>")
 }
 
+
 func main() {
 	r := mux.NewRouter()
+	r.NotFoundHandler = http.HandlerFunc(notFoundHandler)
 	r.HandleFunc("/", home)
 	r.HandleFunc("/contact", contact)
 	r.HandleFunc("/faq", faq)
