@@ -8,6 +8,7 @@ import (
 
 func notFoundHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-type", "text/html")
+	w.WriteHeader(http.StatusNotFound)
 	fmt.Fprint(w, "<h1> My page not found =)</h1>")
 }
 
