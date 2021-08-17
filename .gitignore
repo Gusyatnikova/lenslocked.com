@@ -17,5 +17,5 @@
 #Go files
 go.mod
 go.sum
-runner.confS
+runner.conf
 
